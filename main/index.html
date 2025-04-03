@@ -12,10 +12,12 @@
         <div class="nav-brand">
             <a href="index.html" style="color: white; text-decoration: none;">Fred的廢文放置場</a>
         </div>
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Main</a></li>
             <li><a href="../about/index.html">About</a></li>
-            <!--<li><a href="../blog/post.html">Blog</a></li> -->
+           <!--<li><a href="../blog/post.html">Blog</a></li>-->
         </ul>
     </nav>
 
@@ -59,5 +61,11 @@
     <script src="../js/achievements.js"></script>
     <script src="../js/blog.js"></script>
     <script src="../js/scroll-animation.js"></script>
+    <script>
+        // 漢堡菜單切換
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html> 

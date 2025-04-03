@@ -61,6 +61,17 @@ body {
     background-color: #34495e;
 }
 
+/* 漢堡菜單按鈕 */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
 /* 容器樣式 */
 .container {
     max-width: 100%;
@@ -405,15 +416,17 @@ footer {
 @media (max-width: 768px) {
     .achievements-grid {
         grid-template-columns: 1fr;
-        width: 95vw;
+        width: 80vw;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .skills-grid {
-        width: 95vw;
+        width: 80vw;
     }
     
     .blog-post {
-        width: 95vw;
+        width: 80vw;
     }
     
     .profile {
@@ -423,10 +436,74 @@ footer {
 
     .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2c3e50;
+        padding: 1rem;
+        flex-direction: column;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.5rem;
     }
 
     .hero h1 {
         font-size: 2rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievements-grid {
+        width: 90vw;
+    }
+    
+    .skills-grid {
+        width: 90vw;
+    }
+    
+    .blog-post {
+        width: 90vw;
+    }
+
+    .nav-brand {
+        font-size: 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .achievement-card {
+        padding: 1rem;
+    }
+
+    .achievement-title {
+        font-size: 1rem;
+    }
+
+    .achievement-content {
+        font-size: 0.9rem;
     }
 }
 
