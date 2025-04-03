@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fred的廢文放置場</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html" style="color: white; text-decoration: none;">Fred的廢文放置場</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Main</a></li>
+            <li><a href="../about/index.html">About</a></li>
+            <!--<li><a href="../blog/post.html">Blog</a></li> -->
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="hero animate-on-scroll">
+            <h1>歡迎來到Fred的廢文放置場</h1>
+            <p>這裡只是一個滿佈廢文、沒甚麼料的地方...</p>
+        </section>
+
+        <section class="recent-achievements animate-on-scroll">
+            <h2>最近比賽成績</h2>
+            <div class="achievements-grid" id="achievements-list">
+                <!-- 比賽成績將由JavaScript動態載入 -->
+            </div>
+            <div class="view-all">
+                <a href="../about/index.html" class="read-more">查看所有比賽成績</a>
+            </div>
+        </section>
+
+        <!--<section class="recent-blogs animate-on-scroll">
+            <h2>最新網誌</h2>
+            <div id="blog-list">
+                 網誌列表將由JavaScript動態載入
+            </div>
+        </section>-->
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fred Hoi. All rights reserved.</p>
+    </footer>
+
+    <div class="social-buttons">
+        <a href="https://github.com/fredhoi" class="social-button" title="GitHub">
+            <i class="fab fa-github"></i>
+       <!-- </a>
+        <a href="#" class="social-button" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>-->
+    </div>
+
+    <script src="../js/achievements.js"></script>
+    <script src="../js/blog.js"></script>
+    <script src="../js/scroll-animation.js"></script>
+</body>
+</html> 

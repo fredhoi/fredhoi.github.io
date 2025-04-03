@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog backend</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .admin-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 300px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .success-message {
+            background-color: #2ecc71;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="../main/index.html" style="color: white; text-decoration: none;">Fred的廢文放置場</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../about/index.html" class="active">About</a></li>
+            <li><a href="../blog/post.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="admin-section">
+            <h1>發布新網誌</h1>
+            <div class="success-message" id="successMessage">
+                網誌發布成功！
+            </div>
+            <form class="admin-form" id="blogForm">
+                <div class="form-group">
+                    <label for="title">標題</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">內容</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">發布網誌</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 我的個人網站. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/blog.js"></script>
+    <script>
+        document.getElementById('blogForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const date = new Date().toISOString();
+            
+            addBlogPost(title, content, date);
+            
+            // 顯示成功訊息
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // 清空表單
+            this.reset();
+            
+            // 3秒後隱藏成功訊息
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+</html> 
