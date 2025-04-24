@@ -134,18 +134,20 @@ body {
 
 /* 網誌樣式 */
 .blog-post {
-    background-color: white;
-    padding: 2rem;
+    background: #fff;
     border-radius: 8px;
+    padding: 1.5rem;
     margin-bottom: 2rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    width: 67vw;
-    margin-left: auto;
-    margin-right: auto;
+    transition: transform 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
 }
 
 .blog-post h3 {
-    color: #2c3e50;
+    color: #333;
     margin-bottom: 1rem;
 }
 
@@ -153,22 +155,34 @@ body {
     color: #666;
     font-size: 0.9rem;
     margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.post-category {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
 }
 
 .post-preview {
+    color: #666;
     margin-bottom: 1rem;
-    color: #444;
+    line-height: 1.6;
 }
 
 .read-more {
     display: inline-block;
-    color: #3498db;
+    color: #007bff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .read-more:hover {
-    text-decoration: underline;
+    color: #0056b3;
 }
 
 .blog-container {
@@ -397,6 +411,29 @@ footer {
     color: #CD7F32;
 }
 
+/* 文章分類標籤 */
+.category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.category-tag {
+    background: #f0f0f0;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.category-tag:hover,
+.category-tag.active {
+    background: #007bff;
+    color: #fff;
+}
+
 /* 響應式設計 */
 @media (max-width: 1024px) {
     .achievements-grid {
@@ -426,7 +463,7 @@ footer {
     }
     
     .blog-post {
-        width: 80vw;
+        padding: 1rem;
     }
     
     .profile {
@@ -470,6 +507,15 @@ footer {
 
     .menu-toggle {
         display: block;
+    }
+
+    .post-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .category-tags {
+        justify-content: center;
     }
 }
 

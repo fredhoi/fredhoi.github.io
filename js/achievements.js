@@ -2,6 +2,13 @@
 const achievements = [
     {
         year: "2025",
+        date: "2025/04",
+        title: "銀娛天文盃—第一屆澳門國際青少年天文比賽(天文知識競賽–低年組)",
+        score: "銀獎",
+        type: "silver"
+    },
+    {
+        year: "2025",
         date: "2025/02",
         title: "2025港澳數學奧林匹克公開賽(港澳盃)(中三組)",
         score: "銅獎",
