@@ -2,6 +2,8 @@
 
 一個基於 AI 的智慧皮膚健康分析應用程式，提供即時皮膚問題檢測、個人化護理建議和互動式語音助手功能。
 
+**🌐 在線訪問**: [https://fredhoi.github.io/fredhoi.github.io/skin-helper/](https://fredhoi.github.io/fredhoi.github.io/skin-helper/)
+
 ## 📁 專案結構
 
 ```
