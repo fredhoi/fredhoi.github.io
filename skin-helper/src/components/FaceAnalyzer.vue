@@ -193,15 +193,16 @@ const initializeCamera = async () => {
   }
 }
 
-// 載入本地 TensorFlow.js 模型（嘗試多個常見路徑作 fallback）
+// 載入本地 TensorFlow.js 模型（嘗試多個常見路徑作 fallback） - 使用相對 base
 const loadLocalSkinModel = async () => {
+  const BASE_URL = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) ? import.meta.env.BASE_URL : '/'
   const candidatePaths = [
-    '/models/skin_classifier/model.json',
-    '/model/skin_classifier/model.json',
-    '/models/model.json',
-    '/model/model.json',
-    '/model/model.json', // fallback duplicates safe
-    '/models/skin_classifier/model.json' // final retry
+    `${BASE_URL}models/skin_classifier/model.json`,
+    `${BASE_URL}model/skin_classifier/model.json`,
+    `${BASE_URL}models/model.json`,
+    `${BASE_URL}model/model.json`,
+    `${BASE_URL}model/model.json`, // fallback duplicates safe
+    `${BASE_URL}models/skin_classifier/model.json` // final retry
   ]
 
   for (const p of candidatePaths) {

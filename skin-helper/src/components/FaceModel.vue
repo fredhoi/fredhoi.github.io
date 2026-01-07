@@ -80,8 +80,9 @@ const dpr = ref(typeof window !== 'undefined' ? (window.devicePixelRatio || 1) :
 // 2D image
 const imageRef = ref(null)
 const issues = computed(() => props.issues || [])
+const BASE_URL = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) ? import.meta.env.BASE_URL : '/'
 const chosenImg = computed(() => {
-  return props.imageSrc && props.imageSrc.length > 0 ? props.imageSrc : '/test.png'
+  return props.imageSrc && props.imageSrc.length > 0 ? props.imageSrc : `${BASE_URL}test.png`
 })
 
 const modelError = ref('')
@@ -93,7 +94,7 @@ const onImageLoad = (e) => {
 
 const onImageError = (e) => {
   modelLoaded.value = false
-  modelError.value = '2D 臉部底圖載入失敗，請確認 public/models/face.png 是否存在'
+  modelError.value = `2D 臉部底圖載入失敗，請確認 ${BASE_URL}models/face.png 是否存在`
   console.error(modelError.value, e)
 }
 
