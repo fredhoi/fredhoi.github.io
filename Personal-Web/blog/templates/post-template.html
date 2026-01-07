@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章標題 - 我的個人網站</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="../../main/index.html" style="color: white; text-decoration: none;">我的個人網站</a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../../main/index.html">Main</a></li>
+            <li><a href="../../main/index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Blog</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <article class="full-blog-post">
+            <!-- 文章內容將在這裡動態加載 -->
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fred Hoi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/blog.js"></script>
+    <script>
+        // 文章數據
+        const postData = {
+            id: "post-id", // 文章唯一標識符
+            title: "文章標題",
+            date: "2024-03-20",
+            author: "Fred Hoi",
+            content: [
+                {
+                    type: "text",
+                    content: "這是文章的第一段內容。"
+                },
+                {
+                    type: "image",
+                    src: "../../images/example.jpg",
+                    alt: "圖片描述",
+                    caption: "圖片說明文字"
+                },
+                {
+                    type: "text",
+                    content: "這是文章的第二段內容。"
+                }
+            ]
+        };
+
+        // 加載文章內容
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogPost = document.querySelector('.full-blog-post');
+            if (blogPost) {
+                loadPostContent(postData, blogPost);
+            }
+        });
+
+        // 漢堡菜單切換
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

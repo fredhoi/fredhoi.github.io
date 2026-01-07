@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網誌 - 我的個人網站</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="../main/index.html" style="color: white; text-decoration: none;">我的個人網站</a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../main/index.html">Main</a></li>
+            <li><a href="../main/index.html">Home</a></li>
+            <li><a href="index.html" class="active">Blog</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h1>我的網誌</h1>
+        
+        <!-- 分類標籤 -->
+        <div class="category-tags">
+            <a href="#" class="category-tag active" data-category="all">全部文章</a>
+            <a href="#" class="category-tag" data-category="technology">技術</a>
+            <a href="#" class="category-tag" data-category="life">生活</a>
+            <a href="#" class="category-tag" data-category="study">學習</a>
+        </div>
+        
+        <div id="blog-list" class="blog-list">
+            <!-- 網誌列表將在這裡動態加載 -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fred Hoi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/blog.js"></script>
+    <script>
+        // 分類篩選功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryTags = document.querySelectorAll('.category-tag');
+            
+            categoryTags.forEach(tag => {
+                tag.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 更新活動標籤
+                    categoryTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 獲取選中的分類
+                    const category = this.dataset.category;
+                    
+                    // 篩選文章
+                    const blogList = document.getElementById('blog-list');
+                    const posts = blogList.querySelectorAll('.blog-post');
+                    
+                    posts.forEach(post => {
+                        const postCategory = post.querySelector('.post-category')?.textContent.replace('分類：', '');
+                        if (category === 'all' || postCategory === category) {
+                            post.style.display = 'block';
+                        } else {
+                            post.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 漢堡菜單切換
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 
