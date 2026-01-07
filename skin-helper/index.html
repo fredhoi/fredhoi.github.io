@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AI 皮膚健康助手 - 智能皮膚分析，個性化護理建議，3D 可視化皮膚地圖" />
+    <meta name="keywords" content="AI, 皮膚分析, 臉部檢測, 痤瘡, 黑頭, 色斑, 毛孔, 皺紋, TensorFlow.js, Vue 3" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://skin-health-assistant.com/" />
+    <meta property="og:title" content="AI 皮膚健康助手" />
+    <meta property="og:description" content="使用 AI 技術智能分析臉部皮膚問題，提供個性化護理建議和 3D 可視化" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://skin-health-assistant.com/" />
+    <meta property="twitter:title" content="AI 皮膚健康助手" />
+    <meta property="twitter:description" content="使用 AI 技術智能分析臉部皮膚問題，提供個性化護理建議和 3D 可視化" />
+    <meta property="twitter:image" content="/og-image.png" />
+
+    <title>AI 皮膚健康助手</title>
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+      /* Loading screen styles */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+
+      #loading-screen.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 20px;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .loading-text {
+        color: white;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+
+      /* Body font */
+      body {
+        font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">
+        <div>AI 皮膚健康助手載入中</div>
+        <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">
+          初始化 AI 模型與 3D 引擎...
+        </div>
+      </div>
+    </div>
+
+    <div id="app"></div>
+
+    <script>
+      // Loading screen management
+      window.addEventListener('load', () => {
+        // Hide loading screen after a minimum time to ensure smooth UX
+        setTimeout(() => {
+          const loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) {
+            loadingScreen.classList.add('hide');
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }
+        }, 2000);
+      });
+
+      // Performance monitoring
+      if ('performance' in window && 'PerformanceObserver' in window) {
+        try {
+          // Monitor Largest Contentful Paint (LCP)
+          const lcpObserver = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            const lastEntry = entries[entries.length - 1];
+            console.log('LCP:', lastEntry.startTime);
+          });
+          lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+          // Monitor First Input Delay (FID)
+          const fidObserver = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            entries.forEach((entry) => {
+              console.log('FID:', entry.processingStart - entry.startTime);
+            });
+          });
+          fidObserver.observe({ entryTypes: ['first-input'] });
+
+          // Monitor Cumulative Layout Shift (CLS)
+          let clsValue = 0;
+          const clsObserver = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            entries.forEach((entry) => {
+              if (!entry.hadRecentInput) {
+                clsValue += entry.value;
+              }
+            });
+            console.log('CLS:', clsValue);
+          });
+          clsObserver.observe({ entryTypes: ['layout-shift'] });
+        } catch (e) {
+          console.warn('Performance monitoring not fully supported');
+        }
+      }
+
+      // Service Worker registration for PWA (if implemented)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // Register service worker when implemented
+          // navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+{
+  "name": "ai-skin-health-assistant",
+  "version": "1.0.0",
+  "description": "AI 皮膚健康助手 - 智能皮膚分析，個性化護理建議，3D 可視化",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "analyze": "vite build --mode analyze"
+  },
+  "keywords": [
+    "AI",
+    "皮膚分析",
+    "臉部檢測",
+    "痤瘡",
+    "黑頭",
+    "色斑",
+    "毛孔",
+    "皺紋",
+    "TensorFlow.js",
+    "Vue 3",
+    "TresJS",
+    "WebGL"
+  ],
+  "author": "AI Skin Health Assistant Team",
+  "license": "MIT",
+  "dependencies": {
+    "@tensorflow-models/face-landmarks-detection": "^1.0.6",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.22.0",
+    "@tensorflow/tfjs-converter": "^4.22.0",
+    "@tensorflow/tfjs-core": "^4.22.0",
+    "@tresjs/cientos": "^5.2.1",
+    "@tresjs/core": "^5.2.1",
+    "@vueuse/core": "^10.7.2",
+    "opencv.js": "^1.2.1",
+    "three": "^0.182.0",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.22.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.19",
+    "vite": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "iOS >= 10",
+    "Android >= 7"
+  ]
+}
