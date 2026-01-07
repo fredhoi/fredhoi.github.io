@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>示例文章 - 我的個人網站</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="../../main/index.html" style="color: white; text-decoration: none;">我的個人網站</a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../../main/index.html">Main</a></li>
+            <li><a href="../../main/index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Blog</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <article class="full-blog-post">
+            <!-- 文章內容將在這裡動態加載 -->
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fred Hoi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/blog.js"></script>
+    <script type="application/json">
+    {
+        "id": "example-post",
+        "title": "示例文章",
+        "date": "2024-03-20",
+        "author": "Fred Hoi",
+        "content": [
+            {
+                "type": "text",
+                "content": "這是文章的第一段內容。在這裡，我將分享一些有趣的想法和經歷。"
+            },
+            {
+                "type": "image",
+                "src": "../../images/example.jpg",
+                "alt": "示例圖片",
+                "caption": "這是一張示例圖片"
+            },
+            {
+                "type": "text",
+                "content": "這是文章的第二段內容。我們可以繼續分享更多的想法和見解。"
+            }
+        ]
+    }
+    </script>
+    <script>
+        // 漢堡菜單切換
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 
